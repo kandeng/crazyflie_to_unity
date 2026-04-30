@@ -136,7 +136,33 @@ in offline mode.
    /home/robot/.espressif/tools/python/v5.2.6/venv
    ~~~
 
-5. Create conda env
+5. Add user to dialout
+
+   Following [the official guide of `ESP-IDF`](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/get-started/establish-serial-connection.html#adding-user-to-dialout-or-uucp-on-linux),
+   to add user to dialout
+
+   ~~~
+   robot@robot-test:~/crazyflie$ sudo usermod -aG dialout robot
+   ~~~
+   
+6. Exit `venv` env and create `conda` env
+
+   Exit from `venv` env after sourcing the `activate_idf_v5.2.6.sh`. 
+
+   ~~~   
+   robot@robot-test:~/crazyflie$ source "/home/robot/.espressif/tools/activate_idf_v5.2.6.sh"
+   ...
+   Activated virtual environment at /home/robot/.espressif/tools/python/v5.2.6/venv
+   Environment setup complete for the current shell session.
+   These changes will be lost when you close this terminal.
+   You are now using IDF version 5.2.
+   eim select v5.2.6
+   
+   (venv) robot@robot-test:~/crazyflie$ deactivate
+   robot@robot-test:~/crazyflie$ 
+   ~~~ 
+
+   Create `conda` env. 
 
    ~~~
    robot@robot-test:~/crazyflie$ conda create --name crazyflie python=3.14
@@ -149,3 +175,182 @@ in offline mode.
 
 &nbsp;
 ### 3.2 Install ESP32-S3 AI Deck
+
+Don't use PuTTY or the regular bash shell in the regular terminal, as they do not work for unknown reasons. 
+Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
+
+1. Download `esp32s3_ai_deck` github repo
+
+   We downloaded the source code from [`esp32s3_ai_deck`](https://github.com/bitdeckai/esp32s3_ai_deck) github repo,
+   and stored it in `~/crazyflie` directory.  
+
+   ~~~
+   (crazyflie) robot@robot-test:~/crazyflie$ tree -L 1 esp32s3_ai_deck/
+   esp32s3_ai_deck/
+   ├── esp32s3_ai_deck_allinone
+   ├── esp32s3_audio_i2s_es8311
+   ├── esp32s3_camera_ov2640_stream
+   ├── media
+   ├── README.md
+   ├── sch_pcb
+   └── tools
+   
+   6 directories, 1 file
+   ~~~
+
+2. Open `ESP-IDF` terminal
+
+   In VS-Code IDE, install `ESP-IDF` extension.
+
+   In VS-Code IDE, open `~/crazyflie/esp32s3_ai_deck` file directory. 
+  
+   Open `ESP-IDF` terminal. 
+  
+   <p align="center" vertical-align="top">
+     <img alt="install ESP-IDF extension" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     &nbsp;
+     <img alt="open ESP-IDF terminal" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+   </p>       
+
+   <p align="center" vertical-align="top">
+     <img alt="install ESP-IDF extension" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     &nbsp;
+     <img alt="open ESP-IDF terminal" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+   </p>     
+
+3. Enter `ESP-IDF` environment
+
+   All following commands are executed within the ESP-IDF terminal in the VS Code IDE.
+
+   Exit `venv` env and activate `conda` env. 
+
+   ~~~
+   robot@robot-test:~/crazyflie$ source "/home/robot/.espressif/tools/activate_idf_v5.2.6.sh"
+   
+   (venv) robot@robot-test:~/crazyflie$ deactivate
+   robot@robot-test:~/crazyflie$
+
+   robot@robot-test:~/crazyflie$ conda activate crazyflie
+   (crazyflie) robot@robot-test:~/crazyflie$
+   ~~~
+
+   Set Target to `esp32s3`.
+   
+   ~~~
+   (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ unset IDF_TARGET
+   
+   (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ idf.py set-target esp32s3
+   Adding "set-target"'s dependency "fullclean" to list of commands with default set of options.
+   Executing action: fullclean
+   Build directory '/home/robot/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone/build' is empty. Nothing to clean.
+   Executing action: set-target
+   Set Target to: esp32s3, new sdkconfig will be created.
+   Running cmake in directory /home/robot/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone/build
+   Executing "cmake -G Ninja -DPYTHON_DEPS_CHECKED=1 -DPYTHON=/home/robot/.espressif/tools/python/v5.2.6/venv/bin/python -DESP_PLATFORM=1 -DIDF_TARGET=esp32s3 -DCCACHE_ENABLE=0 /home/robot/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone"...
+   ...
+   -- Configuring done (11.2s)
+   -- Generating done (0.2s)
+   -- Build files have been written to: /home/robot/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone/build
+   ~~~
+
+
+&nbsp;
+### 3.3 Compile and flash ESP32s3 AI Deck
+
+1. Assemble hardware
+
+   Plug the `ESP32s3 AI Deck` into the pin headers on top of the `Crazyflie2.1` main board.
+
+   Plug the cable of the `ESP32s3 AI Deck` into the USB port of the ubuntu computer.
+
+   After compiling and flashing the firmware of the `ESP32s3 AI Deck`,
+   and before flying the crazyflie drone,
+   make sure to unplug the cable from the `ESP32s3 AI Deck`.
+
+   <p align="center" vertical-align="top">
+     <img alt="crazyradio PA" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     &nbsp;
+     <img alt="esp32s3_AI_deck" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+   </p>  
+
+
+2. Compiling, monitoring, and flashing
+
+   Following the instruction of [`ESP32s3 AI Deck`](https://github.com/bitdeckai/esp32s3_ai_deck#esp32s3-compile-and-download-command),
+   execute the following commands within the ESP-IDF terminal in the VS Code IDE.
+
+   In case you haven't added the user to dialout, please do it.
+
+   ~~~
+   (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ pwd
+   /home/robot/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone
+  
+   // Add user to dialout
+   (crazyflie) robot@robot-test:~/crazyflie$ sudo usermod -aG dialout robot
+   ~~~
+
+   Now it is time to compile, flash and monitor.
+
+   <p align="center" vertical-align="top">
+     <img alt="crazyradio PA" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     &nbsp;
+     <img alt="esp32s3_AI_deck" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+   </p>  
+
+   Check the environment. 
+
+   ~~~
+   (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ source ~/.espressif/v5.2.6/esp-idf/export.sh
+   Detecting the Python interpreter
+   Checking "python3" ...
+   Python 3.14.3
+   "python3" has been detected
+   Checking Python compatibility
+   Checking other ESP-IDF version.
+   ~~~
+
+   Clean up the compilation platform. 
+   
+   ~~~
+   (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ idf.py fullclean
+   Executing action: fullclean
+   <ignore the errors>
+   ~~~
+
+   Set target to `esp32s3`.
+   
+   ~~~
+   (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ unset IDF_TARGET
+   (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ idf.py set-target esp32s3
+   ~~~
+
+   Compile.
+   
+   ~~~
+   (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ idf.py menuconfig
+   <In most cases, we don't need to change anything>
+
+   (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ idf.py build
+   ~~~
+
+   Flash and monitor.
+
+   Referring to the image above, push the `Boot` button, hold it then push `Reset` button,
+   check the COM port, then run `flash`.
+
+   ~~~
+   // push the `Boot` button, hold it then push `Reset` button, 
+   (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ idf.py -p /dev/ttyACM0 flash
+
+   // monitor UART with baut rate 115200 for ESP32s3.
+   (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ idf.py -p /dev/ttyACM0 monitor
+
+   // do flashing and UART monitoring simultaneously. 
+   (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ idf.py -p /dev/ttyACM0 flash monitor
+   ~~~
+   
+   <p align="center" vertical-align="top">
+     <img alt="build" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     &nbsp;
+     <img alt="flash" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+   </p>     
