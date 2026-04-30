@@ -178,7 +178,7 @@ in offline mode.
 
 
 &nbsp;
-### 3.2 Install ESP32-S3 AI Deck
+## 4. Install ESP32-S3 AI Deck
 
 Don't use PuTTY or the regular bash shell in the regular terminal, as they do not work for unknown reasons. 
 Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
@@ -253,7 +253,7 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
 
 
 &nbsp;
-## 4. Compile and flash ESP32s3 AI Deck
+## 5. Compile and flash ESP32s3 AI Deck
 
 1. Assemble hardware
 
@@ -369,7 +369,7 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
 
 
 &nbsp;
-## 5. IP address of ESP32s3 AI Deck
+## 6. IP address of ESP32s3 AI Deck
 
 When powering on the crazyflie2.1 drone, the onboard wifi station on the ESP32s3-AI-Deck starts automatically.
 
