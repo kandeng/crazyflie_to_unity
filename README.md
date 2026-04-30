@@ -1,11 +1,19 @@
-# Integrate Crazyflie Drone with Unity Game Engine
+# Integrate Crazyflie Drone with ESP32-S3
 
 ## 1. Objective
 
-This project integrates [Crazyflie 2.1_drone](https://www.bitcraze.io/products/crazyflie-2-1-brushless/) 
-with [Unity6 game engine](https://unity.com/releases/unity-6). 
-We use Unity6 as the controller of the Crazyflie2.1, to receive the drone's telemetry and its video stream, 
-and to send commands to control the movement of the drone. 
+While the native [Crazyflie 2.1_drone](https://www.bitcraze.io/products/crazyflie-2-1-brushless/)
+setup (using Crazyradio PA and `cflib` python package) is user-friendly, 
+it lacks video streaming capability and wifi connectivity.
+
+[`ESP-Drone`](https://docs.espressif.com/projects/espressif-esp-drone/en/latest/gettingstarted.html)
+provides a viable solution for Wi-Fi communication and video streaming. 
+In addition, [a Taobao store "DinosaurTech"](https://shop114749119.taobao.com/) 
+offers an experimental accessory named 
+[`ESP32-S3 AI Deck`](https://github.com/bitdeckai/esp32s3_ai_deck).
+
+However, installing and configuring `ESP-Drone` and `ESP32-S3 AI Deck` is not straightforward.
+We followed the procedure below and finally got it working after several attempts.
 
 
 &nbsp;
@@ -14,13 +22,6 @@ and to send commands to control the movement of the drone.
 We bought a Crazyflie 2.1 hardware kit from 
 [a Taobao store named DinosaurTech](https://item.taobao.com/item.htm?id=985921221709). 
 The kit includes four components, with a total cost of US$230.
-
-It is quite straightforward to [assemble the Crazyflie 2.1](https://www.bitcraze.io/documentation/tutorials/getting-started-with-crazyflie-brushless/), 
-with well-written documentation. 
-
-It is also very easy to use Python to use radio to 
-[communicate with the Crazyflie 2.1](https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/user-guides/sbs_connect_log_param/), 
-and control its movement.
 
 ~~~
 1 * crazyflie2.1
@@ -47,22 +48,18 @@ Right: The ESP32s3 AI Deck is plugged into the pin headers on top of the `Crazyf
      <img alt="esp32s3_AI_deck" src="./asset/crazyflie_ai_deck.jpg" width="48%">
    </p>  
 
+It is quite straightforward to [assemble the Crazyflie 2.1](https://www.bitcraze.io/documentation/tutorials/getting-started-with-crazyflie-brushless/), 
+with well-written documentation. 
+It is also very easy to use Python to use radio to 
+[communicate with the Crazyflie 2.1](https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/user-guides/sbs_connect_log_param/), 
+and control its movement.
+
+However as mentioned above, `crazyradio` doesn’t support video streaming capability and wifi connectivity. 
+The following sections describe the procedure for using the `ESP32-S3 AI Deck` as a replacement for the `crazyradio`.
+
 
 &nbsp;
-## 3. ESP32s3 AI Deck
-
-While the native Crazyflie 2.1 setup (using Crazyradio PA and `cflib` python package) is user-friendly, it lacks video streaming capability and wifi connectivity.
-
-[`ESP-Drone`](https://docs.espressif.com/projects/espressif-esp-drone/en/latest/gettingstarted.html)
-provides a viable solution for Wi-Fi communication and video streaming. 
-In addition, the Taobao store "DinosaurTech" offers an experimental accessory named 
-[`ESP32-S3 AI Deck`](https://github.com/bitdeckai/esp32s3_ai_deck).
-
-However, installing and configuring `ESP-Drone` and `ESP32-S3 AI Deck` is not straightforward.
-We followed this procedure and finally got it working after several attempts.
-
-&nbsp;
-### 3.1 Install ESP-IDF
+## 3. Install ESP-IDF
 
 We followed the official guide to 
 [install ESP32s3-IDF](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/get-started/linux-setup.html)
@@ -256,7 +253,7 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
 
 
 &nbsp;
-### 3.3 Compile and flash ESP32s3 AI Deck
+## 4. Compile and flash ESP32s3 AI Deck
 
 1. Assemble hardware
 
@@ -372,7 +369,7 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
 
 
 &nbsp;
-### 3.4 IP address of ESP32s3 AI Deck
+## 5. IP address of ESP32s3 AI Deck
 
 When powering on the crazyflie2.1 drone, the onboard wifi station on the ESP32s3-AI-Deck starts automatically.
 
