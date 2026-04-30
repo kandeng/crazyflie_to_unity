@@ -29,15 +29,22 @@ and control its movement.
 1 * esp32s3_AI_deck
 ~~~
 
+Left: The main board of crazyflie2.1 has two rows of pin headers on its top side.
+Right: The flow deck for navigation is equipped with a camera and is mounted underneath the Crazyflie 2.1 main board.
+
    <p align="center" vertical-align="top">
-     <img alt="crazyflie2.1" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     <img alt="crazyflie2.1" src="./asset/crazyflie_main_board.jpg" width="48%">
      &nbsp;
-     <img alt="flow deck for navigation" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     <img alt="flow deck for navigation" src="./asset/crazyflie_flow_nav.jpg" width="48%">
    </p>  
+
+Left: The crazyradio PA is the default communication channel between the crazyflie2.1 drone and computer. 
+Right: The ESP32s3 AI Deck is plugged into the pin headers on top of the `Crazyflie2.1` main board.
+
    <p align="center" vertical-align="top">
-     <img alt="crazyradio PA" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     <img alt="crazyradio PA" src="./asset/crazyflie_radio_pa.jpg" width="48%">
      &nbsp;
-     <img alt="esp32s3_AI_deck" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     <img alt="esp32s3_AI_deck" src="./asset/crazyflie_ai_deck.jpg" width="48%">
    </p>  
 
 
@@ -262,9 +269,9 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
    make sure to unplug the cable from the `ESP32s3 AI Deck`.
 
    <p align="center" vertical-align="top">
-     <img alt="Plug esp32s3_AI_deck int the pins of the crazyflie main board" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     <img alt="Plug esp32s3_AI_deck into the pins of the crazyflie main board" src="./asset/crazyflie_ai_deck_mount.jpg" width="48%">
      &nbsp;
-     <img alt="Plug esp32s3_AI_deck's cable into the USB of ubuntu computer" src="./asset/esp32_ai_usb.png" width="48%">
+     <img alt="Plug esp32s3_AI_deck's cable into the USB of ubuntu computer" src="./asset/crazyflie_ai_deck_cable.jpg" width="48%">
    </p>  
 
 
