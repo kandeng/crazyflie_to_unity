@@ -205,17 +205,11 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
    In VS-Code IDE, open `~/crazyflie/esp32s3_ai_deck` file directory. 
   
    Open `ESP-IDF` terminal. 
-  
-   <p align="center" vertical-align="top">
-     <img alt="install ESP-IDF extension" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
-     &nbsp;
-     <img alt="open ESP-IDF terminal" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
-   </p>       
 
    <p align="center" vertical-align="top">
-     <img alt="install ESP-IDF extension" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     <img alt="Activate ESP-IDF project" src="./asset/vscode_esp_project.png" width="48%">
      &nbsp;
-     <img alt="open ESP-IDF terminal" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     <img alt="open ESP-IDF terminal" src="./asset/vscode_esp_terminal.png" width="48%">
    </p>     
 
 3. Enter `ESP-IDF` environment
