@@ -369,3 +369,67 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
      &nbsp;
      <img alt="flash" src="./asset/esp32_ai_flash.png" width="48%">
    </p>     
+
+
+&nbsp;
+### 3.4 IP address of ESP32s3 AI Deck
+
+When powering on the crazyflie2.1 drone, the onboard wifi station on the ESP32s3-AI-Deck starts automatically.
+
+The wifi name of the crazyflie2.1 drone can usually be found via the following two steps.
+
+1. Scan the local wifi network and list all devices that are turned on and connected to the router.
+
+   ~~~
+   $ nmap -sn 192.168.0.0/24
+   Starting Nmap 7.80 ( https://nmap.org ) at 2026-04-30 21:04 CST
+   Nmap scan report for localhost (192.168.0.1)
+   Host is up (0.015s latency).
+   Nmap scan report for localhost (192.168.0.100)
+   ...
+   Nmap scan report for localhost (192.168.0.102)
+   Host is up (0.18s latency).
+   ...
+   Nmap done: 256 IP addresses (13 hosts up) scanned in 9.54 seconds
+   ~~~
+
+2. Check the devices in the local wifi network one by one, and tries to get its name/hostname.
+
+   Usually it should display the name of the crazyflie drone, like `espressif`.
+   However in the this particular case, our `ESP32s3 AI Deck` doesn't specify its name,
+   instead, its name is replaced by `localhost`. 
+
+   ~~~
+   $ nmap -sn -R 192.168.0.102
+   Starting Nmap 7.80 ( https://nmap.org ) at 2026-04-30 21:02 CST
+   Nmap scan report for localhost (192.168.0.102)
+   Host is up (0.025s latency).
+   Nmap done: 1 IP address (1 host up) scanned in 0.03 seconds
+   ~~~
+
+3. Find the IP address of the crazyflie2.1 drone, by viewing the webrtc video.
+
+   Open a browser, e.g. chrome on the left and firefox on the right,
+   visit `http://192.168.0.102/`,
+   and then change the IP address to every other device in the wifi network.
+
+   If a video is displayed, that IP addres is the crazyflie drone's IP address.
+
+   <p align="center" vertical-align="top">
+     <img alt="view the webrtc video in chrome" src="./asset/webrtc_chrome.png" width="48%">
+     &nbsp;
+     <img alt="view the webrtc video in firefox" src="./asset/webrtc_firefox.png" width="48%">
+   </p>     
+
+5. If you have access to the local router as its manager, you can find all the devices connected to the router.
+
+   We can log in to the local TP-Link router to easily locate the crazyflie drone,
+   whose wifi IP is `192.168.0.102` and device name is `espressif`.
+
+   <p align="center" vertical-align="top">
+     <img alt="build" src="./asset/esp32_ai_ip_list.png" width="25%">
+     &nbsp;
+     <img alt="flash" src="./asset/esp32_ai_ip_detail.png" width="25%">
+   </p>     
+   
+   
