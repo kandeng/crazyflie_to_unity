@@ -7,6 +7,8 @@ with [Unity6 game engine](https://unity.com/releases/unity-6).
 We use Unity6 as the controller of the Crazyflie2.1, to receive the drone's telemetry and its video stream, 
 and to send commands to control the movement of the drone. 
 
+
+&nbsp;
 ## 2. Hardware
 
 We bought a Crazyflie 2.1 hardware kit from 
@@ -37,4 +39,15 @@ and control its movement.
      &nbsp;
      <img alt="esp32s3_AI_deck" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
    </p>  
+
+
+&nbsp;
+## 3. ESP32s3 AI Deck
+
+While the native Crazyflie 2.1 setup (using Crazyradio PA and `cflib` python package) is user-friendly, it lacks video streaming capability and wifi connectivity.
+
+[ESP-Drone](https://docs.espressif.com/projects/espressif-esp-drone/en/latest/gettingstarted.html)
+provides a viable solution for Wi-Fi communication and video streaming. 
+In addition, the Taobao store "DinosaurTech" offers an experimental accessory named 
+[`ESP32-S3 AI Deck`](https://github.com/bitdeckai/esp32s3_ai_deck).
 
