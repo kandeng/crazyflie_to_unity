@@ -268,13 +268,27 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
    make sure to unplug the cable from the `ESP32s3 AI Deck`.
 
    <p align="center" vertical-align="top">
-     <img alt="crazyradio PA" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     <img alt="Plug esp32s3_AI_deck int the pins of the crazyflie main board" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
      &nbsp;
-     <img alt="esp32s3_AI_deck" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     <img alt="Plug esp32s3_AI_deck's cable into the USB of ubuntu computer" src="./asset/esp32_ai_usb.png" width="48%">
    </p>  
 
 
-2. Compiling, monitoring, and flashing
+2. Find the `tty` port
+
+   Following [the official guide of ESP32s3](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/get-started/establish-serial-connection.html#check-port-on-linux-and-macos),
+   run this command two times, first with the cable unplugged, then with plugged into the USB port.
+   
+   The `tty` port which appears the second time is the one we need.
+   In our case, the crazyflie's `tty` port is `/dev/ttyACM0`.
+
+   ~~~
+   (crazyflie) robot@robot-test:~/crazyflie$ ls /dev/tty*
+   /dev/tty ... /dev/ttyACM0 
+   ~~~
+   
+
+3. Compiling, monitoring, and flashing
 
    Following the instruction of [`ESP32s3 AI Deck`](https://github.com/bitdeckai/esp32s3_ai_deck#esp32s3-compile-and-download-command),
    execute the following commands within the ESP-IDF terminal in the VS Code IDE.
@@ -292,9 +306,9 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
    Now it is time to compile, flash and monitor.
 
    <p align="center" vertical-align="top">
-     <img alt="crazyradio PA" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     <img alt="esp32s3_AI_deck buttons" src="./asset/esp32_ai_button.png" width="48%">
      &nbsp;
-     <img alt="esp32s3_AI_deck" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     <img alt="esp32s3_AI_deck cables" src="./asset/esp32_ai_cable.png" width="48%">
    </p>  
 
    Check the environment. 
@@ -336,7 +350,7 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
    Flash and monitor.
 
    Referring to the image above, push the `Boot` button, hold it then push `Reset` button,
-   check the COM port, then run `flash`.
+   check the tty port, then run `flash`.
 
    ~~~
    // push the `Boot` button, hold it then push `Reset` button, 
@@ -350,7 +364,7 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
    ~~~
    
    <p align="center" vertical-align="top">
-     <img alt="build" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     <img alt="build" src="./asset/esp32_ai_build.png" width="48%">
      &nbsp;
-     <img alt="flash" src="./asset/crazyflie_webrtc_dataflow.png" width="48%">
+     <img alt="flash" src="./asset/esp32_ai_flash.png" width="48%">
    </p>     
