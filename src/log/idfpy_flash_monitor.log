@@ -1,4 +1,3 @@
-# robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ idf.py build
 robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ idf.py -p /dev/ttyACM0 flash monitor
 Executing action: flash
 Running ninja in directory /home/robot/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone/build
