@@ -12,8 +12,19 @@ In addition, [a Taobao store "DinosaurTech"](https://shop114749119.taobao.com/)
 offers an experimental accessory named 
 [`ESP32-S3 AI Deck`](https://github.com/bitdeckai/esp32s3_ai_deck).
 
-However, installing and configuring `ESP-Drone` and `ESP32-S3 AI Deck` is not straightforward.
-We followed the procedure below and finally got it working after several attempts.
+However, as of May 2, 2026, the current firmware version of the `ESP32-S3 AI Deck` runs a camera/HTTP server, 
+but not a `CPX TCP` server on port 5000.
+
+To enable the `ESP32-S3 AI Deck` to establish a TCP connection with the `cflib` library, 
+send motion commands to the crazyflie drone, and receive its telemetry data, 
+we need to update the firmware to include a `CPX TCP` server and flash it to the `ESP32-S3` chip.
+
+In addition, the current firmware of the `ESP32-S3 AI Deck` does not set a device hostname. 
+As a result, we cannot identify its IP address using the `nmap` command (e.g., `nmap -sn -R 192.168.0.102`).
+
+Therefore, we have modified the source code of the `ESP32-S3 AI Deck`. 
+You can download [the code from this repository](https://github.com/kandeng/crazyflie_with_esp32/tree/main/src/esp32s3_ai_deck/esp32s3_ai_deck_allinone), 
+build it, and flash it to the `ESP32-S3` chip by following the procedures described in sections 3–6.
 
 
 &nbsp;
