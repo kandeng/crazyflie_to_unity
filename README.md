@@ -387,9 +387,9 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
 &nbsp;
 ## 6. IP address of ESP32s3 AI Deck
 
-When powering on the crazyflie2.1 drone, the onboard wifi station on the ESP32s3-AI-Deck starts automatically.
+When powering on the `crazyflie2.1` drone, the onboard wifi station on the `ESP32s3 AI Deck` starts automatically.
 
-The wifi name of the crazyflie2.1 drone can usually be found via the following two steps.
+The wifi name of the `crazyflie2.1` drone can usually be found via the following two steps.
 
 1. Scan the local wifi network and list all devices that are turned on and connected to the router.
 
@@ -406,16 +406,14 @@ The wifi name of the crazyflie2.1 drone can usually be found via the following t
    Nmap done: 256 IP addresses (13 hosts up) scanned in 9.54 seconds
    ~~~
 
-2. Check the devices in the local wifi network one by one, and tries to get its name/hostname.
+2. Check the devices in the local wifi network one by one, and tries to get its device name.
 
-   Usually it should display the name of the crazyflie drone, like `espressif`.
-   However in the this particular case, our `ESP32s3 AI Deck` doesn't specify its name,
-   instead, its name is replaced by `localhost`. 
+   We have modified the source code of `ESP32s3 AI Deck` to specify its default device name to be `crazyflie-esp32s3`.
 
    ~~~
    $ nmap -sn -R 192.168.0.102
    Starting Nmap 7.80 ( https://nmap.org ) at 2026-04-30 21:02 CST
-   Nmap scan report for localhost (192.168.0.102)
+   Nmap scan report for crazyflie-esp32s3 (192.168.0.102)
    Host is up (0.025s latency).
    Nmap done: 1 IP address (1 host up) scanned in 0.03 seconds
    ~~~
@@ -436,8 +434,8 @@ The wifi name of the crazyflie2.1 drone can usually be found via the following t
 
 5. If you have access to the local router as its manager, you can find all the devices connected to the router.
 
-   We can log in to the local TP-Link router to easily locate the crazyflie drone,
-   whose wifi IP is `192.168.0.102` and device name is `espressif`.
+   In our case, we logged into the local TP-Link router, and easily located the `ESP32s3 AI Deck`,
+   whose wifi IP is `192.168.0.102` and its device name is `crazyflie-esp32s3`.
 
    <p align="center" vertical-align="top">
      <img alt="build" src="./asset/esp32_ai_ip_list.png" width="25%">
