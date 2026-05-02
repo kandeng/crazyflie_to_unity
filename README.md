@@ -143,13 +143,18 @@ in offline mode.
 5. Add user to dialout
 
    Following [the official guide of `ESP-IDF`](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/get-started/establish-serial-connection.html#adding-user-to-dialout-or-uucp-on-linux),
-   to add user to dialout
+   to add user to dialout.
+
+   In the case below, `20(dialout)` confirms the command `sudo usermod -aG dialout robot` ran successfully.
 
    ~~~
    robot@robot-test:~/crazyflie$ sudo usermod -aG dialout robot
+
+   robot@robot-test:~/crazyflie$ id robot
+   uid=1000(robot) gid=1000(robot) groups=1000(robot),4(adm),20(dialout),24(cdrom),27(sudo),30(dip),46(plugdev),122(lpadmin),135(lxd),136(sambashare),999(docker),998(ollama)
    ~~~
    
-6. Exit `venv` env and create `conda` env
+7. Exit `venv` env and create `conda` env
 
    Exit from `venv` env after sourcing the `activate_idf_v5.2.6.sh`. 
 
