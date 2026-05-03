@@ -1,0 +1,17 @@
+robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ rm -rf /home/robot/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone/build
+
+robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ idf.py fullclean
+Executing action: fullclean
+Build directory '/home/robot/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone/build' is empty. Nothing to clean.
+Executing action: remove_managed_components
+ERROR: Some components in the "managed_components" directory were modified on the disk since the last run of the CMake.
+
+espressif__esp_codec_dev: Hash of the file "CMakeLists.txt" in the component in "/home/robot/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone/managed_components/espressif__esp_codec_dev" does not match expected hash "07736f56a69ed320d51b5c068f4ebce8b5f36d74eb4a931683230057999dc386"
+espressif__esp32-camera: Hash of the file "sensors/bf3005.c" in the component in "/home/robot/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone/managed_components/espressif__esp32-camera" does not match expected hash "30d677b5d2ad72c65dbe7849673eb2fd067c70587587ffa23c51e11960ac57be"
+lvgl__lvgl: Hash of the file "tests/CMakeLists.txt" in the component in "/home/robot/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone/managed_components/lvgl__lvgl" does not match expected hash "912861497d99ed21002ed721718b6ae0633a895ed5d5da9e58d7122834188208"
+
+Content of this directory is managed automatically.
+If you want to keep the changes, you can move the directory with the component to the "components" folder of your project.
+I.E. for "espressif__esp_codec_dev" run:
+mv /home/robot/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone/managed_components/espressif__esp_codec_dev /home/robot/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone/components/espressif__esp_codec_dev
+If you want to discard the changes, remove the whole component directory from the "managed_components".
