@@ -337,12 +337,16 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
    Checking other ESP-IDF version.
    ~~~
 
-   Clean up the compilation platform. 
+   Clean up the compilation platform.
+
+   Refer to the [`log/idfpy_fullclean.log`](./src/log/idfpy_fullclean.log) for the correct result.
    
    ~~~
+   (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ rm -rf /home/robot/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone/build
+   
    (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ idf.py fullclean
    Executing action: fullclean
-   <ignore the errors>
+   ...
    ~~~
 
    Set target to `esp32s3`.
@@ -353,6 +357,8 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
    ~~~
 
    Compile.
+
+   Refer to the [`log/idfpy_build.log`](./src/log/idfpy_build.log) for the correct result.
    
    ~~~
    (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ idf.py menuconfig
@@ -361,10 +367,12 @@ Instead, use the `ESP-IDF` terminal in the `ESP-IDF` extension of VS-Code IDE.
    (crazyflie) robot@robot-test:~/crazyflie/esp32s3_ai_deck/esp32s3_ai_deck_allinone$ idf.py build
    ~~~
 
-   Flash and monitor.
+   Flash.
 
-   Referring to the image above, push the `Boot` button, hold it then push `Reset` button,
+   Refer to the image above, push the `Boot` button, hold it then push `Reset` button,
    check the tty port, then run `flash`.
+
+   Refer to the [`log/idfpy_flash.log`](./src/log/idfpy_flash.log) for the correct result.
 
    ~~~
    // push the `Boot` button, hold it then push `Reset` button, 
